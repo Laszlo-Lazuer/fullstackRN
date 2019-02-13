@@ -1,22 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View, Platform, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, Platform, TextInput, KeyboardAvoidingView, ImageBackground } from 'react-native';
 import SearchInput from './components/SearchInput';
+
+import getImageForWeather from './utils/getImageForWeather';
 
 export default class App extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
-        
-        <Text style={[styles.largeText, styles.textStyle]}>
-          San Francisco
-        </Text>
-        <Text style={[styles.smallText, styles.textStyle]}>
-          Light Cloud
-        </Text>
-        <Text style={[styles.largeText, styles.textStyle]}>
-          24°
-        </Text>
-        <SearchInput placeholder="Search any city" />
+        <ImageBackground
+        source={getImageForWeather('Clear')}
+        style={styles.imageContainer}
+        imageStyle={styles.image}
+        >
+          <View style={styles.detailsContainer}>
+            <Text style={[styles.largeText, styles.textStyle]}>
+              San Francisco
+            </Text>
+            <Text style={[styles.smallText, styles.textStyle]}>
+              Light Cloud
+            </Text>
+            <Text style={[styles.largeText, styles.textStyle]}>
+              24°
+            </Text>
+            <SearchInput placeholder="Search any city" />
+          </View>
+        </ImageBackground>
       </KeyboardAvoidingView>
     );
   }
@@ -25,9 +34,13 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#34495E',
+  },
+  detailsContainer: {
+    flex: 1,
     justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,.2)',
+    paddingHorizontal: 20
   },
   textStyle: {
     textAlign: 'center',
@@ -49,5 +62,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     paddingHorizontal: 10,
     alignSelf: 'center',
+  },
+  imageContainer: {
+    flex: 1
+  },
+  image: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover'
   }
 });
