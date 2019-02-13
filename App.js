@@ -6,16 +6,21 @@ import getImageForWeather from './utils/getImageForWeather';
 
 export default class App extends React.Component {
   render() {
+    const location = 'San Francisco';
+
     return (
-      <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior="padding"
+      >
         <ImageBackground
-        source={getImageForWeather('Clear')}
-        style={styles.imageContainer}
-        imageStyle={styles.image}
+          source={getImageForWeather('Clear')}
+          style={styles.imageContainer}
+          imageStyle={styles.image}
         >
           <View style={styles.detailsContainer}>
             <Text style={[styles.largeText, styles.textStyle]}>
-              San Francisco
+              {location}
             </Text>
             <Text style={[styles.smallText, styles.textStyle]}>
               Light Cloud
@@ -23,6 +28,7 @@ export default class App extends React.Component {
             <Text style={[styles.largeText, styles.textStyle]}>
               24°
             </Text>
+            
             <SearchInput placeholder="Search any city" />
           </View>
         </ImageBackground>
@@ -45,7 +51,8 @@ const styles = StyleSheet.create({
   textStyle: {
     textAlign: 'center',
     fontFamily:
-    Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'Roboto',
+      Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'Roboto',
+    color: 'white'
   },
   largeText: {
     fontSize: 44,

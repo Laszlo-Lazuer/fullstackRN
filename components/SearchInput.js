@@ -3,16 +3,21 @@ import { StyleSheet, View, TextInput } from 'react-native';
 
 
 export default class SearchInput extends React.Component {
+    handleChangeText = (newLocation) => {
+        this.props.location = newLocation;
+    }
+
     render() {
         return(
             <View style={styles.container}>
                 <TextInput
-                autoCorrect={false}
-                placeholder={this.props.placeholder}
-                placeholderTextColor="white"
-                underlineColorAndroid="transparent"
-                style={styles.textInput}
-                clearButtonMode="always"
+                    autoCorrect={false}
+                    placeholder={this.props.placeholder}
+                    placeholderTextColor="white"
+                    underlineColorAndroid="transparent"
+                    style={styles.textInput}
+                    clearButtonMode="always"
+                    onChangeText={this.handleChangeText}
                 />
             </View>
         );
@@ -25,7 +30,8 @@ const styles = StyleSheet.create({
         width: 300,
         marginTop: 20,
         backgroundColor: '#666',
-        marginHorizontal: 40,
+        // marginHorizontal: 40,
+        marginHorizontal: 20,
         paddingHorizontal: 10,
         borderRadius: 5,
     },
